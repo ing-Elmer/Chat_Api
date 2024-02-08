@@ -7,9 +7,10 @@ import datetime
 # libreria para sistema operativo
 import sys
 import os
-from dotenv import load_dontenv
 
-load_dontenv()
+import dj_database_url
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,12 +24,15 @@ pymysql.install_as_MySQLdb()
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&xu(ytj6b^r-6w07ryt%l&dil(y1hfgve+m-dni%$@$o#%_%9n'
+SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = []
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 # no escribir archivos py cache
 sys.dont_write_bytecode = True
@@ -65,6 +69,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'chat_api.urls'
@@ -109,20 +114,13 @@ CHANNELS_ALLOWED_HOSTS = ['*']
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bd_chat',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '3306',
-        'OPTIONS': {
-            'charset': 'utf8mb4', 
-            'collation': 'utf8mb4_unicode_ci',
-            'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"'
-        },
-    }
+    'default': dj_database_url.config(
+        # Feel free to alter this value to suit your needs.
+        default='postgresql://postgres:postgres@localhost:5432/mysite',
+        conn_max_age=600
+    )
 }
+
 
 
 # Password validation
@@ -178,7 +176,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = './static/'
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

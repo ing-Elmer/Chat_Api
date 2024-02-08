@@ -6,20 +6,8 @@ Thumbs.db
 
 # Directorios generados por Python
 __pycache__/
-.env
-.env1
-.env2
-.env3
-.env4
-.env.local
+
 # Ignorar el directorio .static
-.static/
-
-# Ignorar archivos que terminen con .js
-*.js
-
-# Ignorar archivos que terminen con .css
-*.css
 
 
 # Archivos de logs

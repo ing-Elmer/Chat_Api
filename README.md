@@ -233,6 +233,8 @@ AUTH_USER_MODEL = 'user.User'
 USERNAME_FIELD = 'email'
 REQUIRED_FIELDS = ['username','first_name', 'last_name']
 ```
+##### instalar ckeditor
+```pip install django-ckeditor```
 
 
 ##### crear super usuario
@@ -249,4 +251,9 @@ REQUIRED_FIELDS = ['username','first_name', 'last_name']
 * generar archivo requirements.txt
 ```pip freeze > requirements.txt```
 
+## Instalar las dependencias
+```pip install -r requirements.txt```
 
+
+### Correr la APP
+```Python manage.py runserve```
