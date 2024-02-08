@@ -1,0 +1,38 @@
+# Archivos generados por el sistema operativo
+.DS_Store
+Thumbs.db
+
+.vscode
+
+# Directorios generados por Python
+__pycache__/
+.env
+.env1
+.env2
+.env3
+.env4
+.env.local
+# Ignorar el directorio .static
+.static/
+
+# Ignorar archivos que terminen con .js
+*.js
+
+# Ignorar archivos que terminen con .css
+*.css
+
+
+# Archivos de logs
+*.log
+
+# Archivos de base de datos SQLite
+db.sqlite3
+
+# Carpeta de archivos temporales
+/tmp/
+
+# Ignorar archivos pycache en cualquier nivel dentro de /chat_api/
+/chat_api/**/__pycache__/
+
+# Ignorar archivos pyc en cualquier nivel dentro de /chat_api/
+/chat_api/**/*.pyc
