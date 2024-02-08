@@ -7,8 +7,8 @@ Thumbs.db
 # Directorios generados por Python
 __pycache__/
 
-# Ignorar el directorio .static
-
+# Ignorar el directorio .env
+/env
 
 # Archivos de logs
 *.log
