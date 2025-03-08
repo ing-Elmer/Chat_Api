@@ -102,6 +102,7 @@ CHANNEL_LAYERS = {
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "https://chatapi-production-c623.up.railway.app/"
 ]
 
 CHANNELS_ALLOWED_HOSTS = ['*']
