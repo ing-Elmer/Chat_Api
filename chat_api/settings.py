@@ -189,10 +189,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
 
 # configuracion de corsheaders
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    
-]
 
 #configuracion de email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
