@@ -24,12 +24,12 @@ pymysql.install_as_MySQLdb()
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
+SECRET_KEY = os.environ.get('SECRET_KEY', default='09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = ["chatapi-production-c623.up.railway.app"]
+ALLOWED_HOSTS = ["chatapi-production-c623.up.railway.app","127.0.0.1"]
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
@@ -102,7 +102,9 @@ CHANNEL_LAYERS = {
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://chatapi-production-c623.up.railway.app/"
+    "https://chatapi-production-c623.up.railway.app",
+
+    
 ]
 
 CHANNELS_ALLOWED_HOSTS = ['*']
