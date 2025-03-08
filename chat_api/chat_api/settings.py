@@ -115,7 +115,7 @@ CHANNELS_ALLOWED_HOSTS = ['*']
 DATABASES = {
     'default': dj_database_url.config(
         # Feel free to alter this value to suit your needs.
-        default='postgres://bd_chat_7t7j_user:DSSyDjJwtbTRbAmeAfQzykKLaskJ2KtX@dpg-cn1r236d3nmc73bq1isg-a.oregon-postgres.render.com/bd_chat_7t7j',
+        default='postgresql://postgres:wUHcKoPruMqoErXbmGlrUaUZSxaoSbgC@caboose.proxy.rlwy.net:35146/Chat-app-db',
         conn_max_age=600
     )
 }
