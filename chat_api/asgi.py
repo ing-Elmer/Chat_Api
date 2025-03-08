@@ -1,17 +1,18 @@
 import os
-from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
+from channels.auth import AuthMiddlewareStack
 from django.core.asgi import get_asgi_application
-from django.conf import settings  # Asegúrate de usar la configuración correcta.
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'chat_api.settings')
 
 application = get_asgi_application()
 
-# Realizar importaciones retrasadas
 from rooms.routing import rooms_websocket_urlpatterns
 from comments.routing import comments_websocket_urlpatterns
 from notification.routing import notifications_websocket_urlpatterns
+
+# Usar el puerto proporcionado por la variable de entorno PORT
+port = os.getenv('PORT', 8000)  # Usa 8000 como fallback si no está definido
 
 application = ProtocolTypeRouter(
     {
@@ -23,3 +24,4 @@ application = ProtocolTypeRouter(
         ),
     }
 )
+
