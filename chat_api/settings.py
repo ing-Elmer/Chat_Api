@@ -203,5 +203,5 @@ EMAIL_HOST_PASSWORD = 'lvlq ibbx dyqb dabk'
 EMAIL_TIMEOUT = 300
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-ACTIVATION_URL = 'http://localhost:5173/activate/{token}/'
-RECOVER_PASSWORD_URL = 'http://localhost:5173/change-password/{token}'
+ACTIVATION_URL = 'https://chat-space-cr.netlify.app/activate/{token}/'
+RECOVER_PASSWORD_URL = 'https://chat-space-cr.netlify.app/change-password/{token}'
